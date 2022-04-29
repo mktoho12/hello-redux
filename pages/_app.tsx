@@ -1,8 +1,15 @@
+import { ReactElement } from "react"
+import { AppPropsWithLayout } from "../definitions"
+import DefaultLayout from "../components/layout/default-layout"
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+const getDefaultLayout = (page: ReactElement) =>
+  <DefaultLayout>{page}</DefaultLayout>
+
+const App = ({ Component, pageProps }: AppPropsWithLayout) => {
+  const getLayout = Component.getLayout || getDefaultLayout
+
+  return getLayout(<Component {...pageProps} />)
 }
 
-export default MyApp
+export default App
