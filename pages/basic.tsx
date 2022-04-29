@@ -36,7 +36,7 @@ const BasicPage: NextPageWithLayout = () => {
 
     <main className="py-12 max-w-[640px] mx-auto">
       <h1 className="text-center text-3xl mb-6">
-        Redux basic example
+        Redux basic example!
       </h1>
       <section>
         <p>
