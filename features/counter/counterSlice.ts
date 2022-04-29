@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { RootState } from "../../app/store"
+import { AppDispatch, RootState } from "../../app/store"
 
 interface CounterState {
   value: number
@@ -22,5 +22,11 @@ const counterSlice = createSlice({
 })
 
 export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const incrementAsync = (amount: number) => (dispatch: AppDispatch) => {
+  setTimeout(() => {
+    dispatch(incrementByAmount(amount))
+  }, 1000)
+}
+
 export const selectCount = (state: RootState) => state.counter.value
 export default counterSlice.reducer
